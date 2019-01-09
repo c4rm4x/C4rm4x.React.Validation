@@ -10,22 +10,6 @@
 npm install --save c4rm4x-react-validation
 ```
 
-## Usage
-
-```jsx
-import React, { Component } from 'react'
-
-import MyComponent from 'c4rm4x-react-validation'
-
-class Example extends Component {
-  render () {
-    return (
-      <MyComponent />
-    )
-  }
-}
-```
-
 ## License
 
 MIT © []C4rM4x[](https://github.com/]C4rM4x[)
