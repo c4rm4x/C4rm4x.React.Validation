@@ -1,0 +1,8 @@
+{
+  "short_name": "c4rm4x-react-validation",
+  "name": "c4rm4x-react-validation",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
