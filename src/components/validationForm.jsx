@@ -49,7 +49,7 @@ export default class ValidationForm extends React.Component {
   submit = (e) => {
     e.preventDefault()
 
-    this.validate().length && this.props.onSubmit(e)
+    this.validate().length === 0 && this.props.onSubmit(e)
   }
 
   getContent = () => {
