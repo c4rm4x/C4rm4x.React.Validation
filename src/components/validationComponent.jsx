@@ -10,27 +10,32 @@ export default class ValidationComponent extends React.Component {
     }
   }
 
-  constructor(props) {
+  constructor(props, state = {}) {
     super(props)
 
-    this.state = {
+    this.state = Object.assign(state, {
       errors: [],
       originalValue: this.props.value
-    }
+    })
 
     this.validate = this.validate.bind(this)
   }
 
   validate = (dryRun = false) => {
     const errors = []
-    const { name, value, validators } = this.props
+    const { 
+      name, 
+      human, 
+      value, 
+      validators 
+    } = this.props
 
     validators.forEach(validator => {
       const errorMessage = typeof validator === 'function'
         ? validator(value)
         : validations[validator](value)
 
-      errorMessage && errors.push(`${name} ${errorMessage}`)
+      errorMessage && errors.push(`${human || name} ${errorMessage}`)
     })
 
     if (!dryRun) {
@@ -66,9 +71,10 @@ ValidationComponent.contextTypes = {
 }
 
 ValidationComponent.propTypes = {
-  validators: PropTypes.array,
   name: PropTypes.string.isRequired,
-  value: PropTypes.any
+  validators: PropTypes.array.isRequired,
+  value: PropTypes.any,
+  human: PropTypes.string // alternative name to use when name is not human friendly
 }
 
 ValidationComponent.defaultProps = {
